@@ -33,5 +33,5 @@ ARG CRON_SCHEDULE_DEFAULT="0 * * * *"
 ENV CRON_SCHEDULE=${CRON_SCHEDULE_DEFAULT:-$CRON_SCHEDULE_DEFAULT}
 RUN echo "$CRON_SCHEDULE /app/cron_script.sh" > /etc/crontabs/root
 
-# Run cron in foreground
-CMD ["crond", "-f"]
+# Run startup script before starting crond
+CMD ["/bin/sh", "-c", "/app/startup.sh && crond -f"]
