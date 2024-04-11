@@ -29,6 +29,7 @@ RUN rm -rf /var/cache/apk/*
 RUN wget -O /config/example_config.yml https://github.com/riffsphereha/downloadarr/tree/main/config/config.yml
 
 # Add script to update crontab dynamically
+COPY update_crontab.sh /app/update_crontab.sh
 RUN chmod +x /app/update_crontab.sh
 
 # Run script to update crontab during container startup
