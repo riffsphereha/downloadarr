@@ -28,10 +28,11 @@ RUN rm -rf /var/cache/apk/*
 # Copy example config file into config directory
 RUN wget -O /config/example_config.yml https://github.com/riffsphereha/downloadarr/tree/main/config/config.yml
 
-# Set up cron schedule from environmental variable
-ARG CRON_SCHEDULE_DEFAULT="0 * * * *"
-ENV CRON_SCHEDULE=${CRON_SCHEDULE_DEFAULT:-$CRON_SCHEDULE_DEFAULT}
-RUN echo "$CRON_SCHEDULE /app/cron_script.sh" > /etc/crontabs/root
+# Add startup script
+RUN chmod +x /app/startup.sh
+
+# Set ownership of startup script to root
+RUN chown root:root /app/startup.sh
 
 # Run startup script before starting crond
 CMD ["/bin/sh", "-c", "/app/startup.sh && crond -f"]
