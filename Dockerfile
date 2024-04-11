@@ -16,7 +16,7 @@ ARG GITHUB_REPO=https://github.com/riffsphereha/downloadarr.git
 RUN apk add --no-cache git && \
     git clone --single-branch --depth 1 --branch main $GITHUB_REPO /tmp/downloadarr && \
     mv /tmp/downloadarr/downloadarr/* ./ && \
-    mv /tmp/downloadarr/config/config.yml ./example_config.yml && \
+    mv /tmp/downloadarr/config/config.yml ./config.yml && \
     rm -rf /tmp/downloadarr
 
 # Install Python dependencies
@@ -31,7 +31,7 @@ RUN chmod +x /app/startup.sh
 RUN chmod +x /app/cron_script.sh
 
 # Set ownership of startup script to root
-RUN chown root:root /app/startup.sh
+# RUN chown root:root /app/startup.sh
 
 # Run startup script before starting crond
 CMD ["/bin/sh", "-c", "/app/startup.sh && crond -f"]
