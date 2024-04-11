@@ -26,7 +26,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN rm -rf /var/cache/apk/*
 
 # Copy example config file into config directory
-RUN wget -O /app/config/example_config.yml https://github.com/riffsphereha/downloadarr/tree/main/config/config.yml
+RUN wget -O /app/example_config.yml https://github.com/riffsphereha/downloadarr/tree/main/config/config.yml
 
 # Add startup script
 RUN chmod +x /app/startup.sh

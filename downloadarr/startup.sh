@@ -2,7 +2,7 @@
 
 # Create config file if not exits
 CONFIG_FILE="/config/config.yml"
-EXAMPLE_CONFIG_FILE="/app/config/example_config.yml"
+EXAMPLE_CONFIG_FILE="/app/example_config.yml"
 
 # Check if the config file exists
 if [ ! -f "$CONFIG_FILE" ]; then
