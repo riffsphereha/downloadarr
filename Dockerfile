@@ -12,7 +12,7 @@ WORKDIR /app
 RUN mkdir /config
 
 # Copy the Python project from GitHub
-ARG GITHUB_REPO=https://github.com/riffsphereha/downloadarr/tree/main/downloadarr
+ARG GITHUB_REPO=https://github.com/riffsphereha/downloadarr.git
 RUN apk add --no-cache git && \
     git clone $GITHUB_REPO .
 
