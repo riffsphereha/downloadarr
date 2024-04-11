@@ -28,8 +28,10 @@ RUN rm -rf /var/cache/apk/*
 # Copy example config file into config directory
 RUN wget -O /config/example_config.yml https://github.com/riffsphereha/downloadarr/tree/main/config/config.yml
 
-# Add script to update crontab dynamically
-# RUN chmod +x update_crontab.sh
+# Set up cron schedule from environmental variable
+ARG CRON_SCHEDULE_DEFAULT="0 * * * *"
+ENV CRON_SCHEDULE=${CRON_SCHEDULE_DEFAULT:-$CRON_SCHEDULE_DEFAULT}
+RUN echo "$CRON_SCHEDULE /app/cron_script.sh" > /etc/crontabs/root
 
-# Run script to update crontab during container startup
-CMD ["/bin/sh", "-c", "/app/update_crontab.sh && crond -f"]
+# Run cron in foreground
+CMD ["crond", "-f"]
