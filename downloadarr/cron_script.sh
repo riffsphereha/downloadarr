@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Function to change ownership recursively
+change_ownership() {
+    chown -R "$1:$2" /app
+}
+change_ownership "$PUID" "$PGID"
+
 # Path to the lock file
 LOCK_FILE="/tmp/cron_script.lock"
 
@@ -13,7 +19,7 @@ fi
 touch "$LOCK_FILE"
 
 # Run the main.py script
-exec su-exec "$UID:$GID" python /app/main.py
+python /app/main.py
 
 # Remove lock file when script completes
 rm -f "$LOCK_FILE"
