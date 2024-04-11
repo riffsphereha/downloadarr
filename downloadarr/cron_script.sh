@@ -13,7 +13,7 @@ fi
 touch "$LOCK_FILE"
 
 # Run the main.py script
-python /app/main.py
+exec su-exec "$UID:$GID" python /app/main.py
 
 # Remove lock file when script completes
 rm -f "$LOCK_FILE"

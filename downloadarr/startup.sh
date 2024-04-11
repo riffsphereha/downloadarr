@@ -15,6 +15,8 @@ fi
 
 # Set the cron schedule from the CRON_SCHEDULE environment variable
 CRON_SCHEDULE=${CRON_SCHEDULE:-"0 * * * *"}
+UUID=${UUID:-99}
+GUID=${GUID:-100}
 
 # Write the cron schedule and command to a temporary file
 echo "$CRON_SCHEDULE sh /app/cron_script.sh" > /etc/crontabs/root
