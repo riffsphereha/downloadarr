@@ -12,7 +12,7 @@ WORKDIR /app
 RUN mkdir /config
 
 # Copy the Python project from GitHub
-ARG GITHUB_REPO=https://github.com/yourusername/yourproject.git
+ARG GITHUB_REPO=https://github.com/riffsphereha/downloadarr/tree/main/downloadarr
 RUN apk add --no-cache git && \
     git clone $GITHUB_REPO .
 
@@ -24,7 +24,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN rm -rf /var/cache/apk/*
 
 # Copy example config file into config directory
-RUN wget -O /config/example_config.yaml https://raw.githubusercontent.com/yourusername/yourproject/main/config/example_config.yaml
+RUN wget -O /config/example_config.yml https://github.com/riffsphereha/downloadarr/tree/main/config/config.yml
 
 # Copy cron script
 COPY cron_script.sh /app/
