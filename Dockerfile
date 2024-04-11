@@ -17,7 +17,6 @@ RUN apk add --no-cache git && \
     git clone $GITHUB_REPO .
 
 # Install Python dependencies
-COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Cleanup unnecessary files
@@ -25,9 +24,6 @@ RUN rm -rf /var/cache/apk/*
 
 # Copy example config file into config directory
 RUN wget -O /config/example_config.yml https://github.com/riffsphereha/downloadarr/tree/main/config/config.yml
-
-# Copy cron script
-COPY cron_script.sh /app/
 
 # Set up cron schedule from environmental variable
 ENV CRON_SCHEDULE="0 * * * *"
