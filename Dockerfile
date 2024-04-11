@@ -15,7 +15,7 @@ RUN mkdir /config
 ARG GITHUB_REPO=https://github.com/riffsphereha/downloadarr.git
 RUN apk add --no-cache git && \
     git clone --single-branch --depth 1 --branch main $GITHUB_REPO /tmp/downloadarr && \
-    mv /tmp/downloadarr/* ./ && \
+    mv /tmp/downloadarr/downloadarr/* ./ && \
     rm -rf /tmp/downloadarr
 
 # Install Python dependencies
