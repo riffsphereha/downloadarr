@@ -2,7 +2,7 @@
 
 # Create config file if not exits
 CONFIG_FILE="/config/config.yml"
-EXAMPLE_CONFIG_FILE="/app/config.yml"
+EXAMPLE_CONFIG_FILE="/app/example_config.yml"
 
 # Check if the config file exists
 if [ ! -f "$CONFIG_FILE" ]; then
@@ -17,7 +17,7 @@ fi
 CRON_SCHEDULE=${CRON_SCHEDULE:-"0 * * * *"}
 
 # Write the cron schedule and command to a temporary file
-echo "$CRON_SCHEDULE /app/cron_script.sh" > /etc/crontabs/root
+echo "$CRON_SCHEDULE sh /app/cron_script.sh" > /etc/crontabs/root
 
 # Load the new crontab configuration
 crontab /etc/crontabs/root
