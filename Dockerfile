@@ -16,6 +16,7 @@ ARG GITHUB_REPO=https://github.com/riffsphereha/downloadarr.git
 RUN apk add --no-cache git && \
     git clone --single-branch --depth 1 --branch main $GITHUB_REPO /tmp/downloadarr && \
     mv /tmp/downloadarr/downloadarr/* ./ && \
+    mv /tmp/downloadarr/config/config.yml ./example_config.yml && \
     rm -rf /tmp/downloadarr
 
 # Install Python dependencies
@@ -25,11 +26,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Cleanup unnecessary files
 RUN rm -rf /var/cache/apk/*
 
-# Copy example config file into config directory
-RUN wget -O /app/example_config.yml https://github.com/riffsphereha/downloadarr/tree/main/config/config.yml
-
 # Add startup script
 RUN chmod +x /app/startup.sh
+RUN chmod +x /app/cron_script.sh
 
 # Set ownership of startup script to root
 RUN chown root:root /app/startup.sh
