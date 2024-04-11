@@ -17,7 +17,6 @@ RUN apk add --no-cache git && \
     git clone $GITHUB_REPO .
 
 # Install Python dependencies
-COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Cleanup unnecessary files
