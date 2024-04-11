@@ -1,0 +1,20 @@
+downloadarr:
+  downloaddir: /downloads # Directory downloadarr will download to, preferably matching the starr apps, no "/" at the end
+  download: # Define what download methods to use
+    lidarr_album_from_youtube: false # Download missing music albums from youtube
+    readarr_books_from_libgen: false # Download missing books from libgen
+
+lidarr:
+  url: http://lidarr:8686 # lidarr url, form "http://ip:port", no "/" at the end
+  api: api # lidarr api
+  importdir: /data/downloads/downloadarr2/ # if download dir does not match the folder lidarr sees, set this to the correct import folder. No "/" at the end
+  importdelay: 15 # Seconds to wait for new search and download when triggering lidarr import, prevents conflicts with files getting moved too soon
+
+readarr:
+  url: http://readarr:8787 # readarr url, form "http://ip:port", no "/" at the end
+  api: api # readarr api
+  importdir: /data/downloads/downloadarr # if download dir does not match the folder readarr sees, set this to the correct import folder. No "/" at the end
+  importdelay: 5 # Seconds to wait for new search and download when triggering readarr import, prevents conflicts with files getting moved too soon
+
+youtube_music:
+  quality: 128 # mp3 quality for the lidarr youtube downloads

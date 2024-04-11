@@ -1,0 +1,5 @@
+ytmusicapi
+yt-dlp
+eyed3
+pyyaml
+bs4
